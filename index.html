@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+    
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        /* Main Section */
+        .main-section {
+            display: flex;
+            width: 1080px;
+            height: 520px;
+            background-color: #f0f4f8;
+            border-radius: 25px;
+            box-shadow: 0 7px 20px #1234564b;
+            overflow: hidden;
+        }
+    
+        /* Left Side - Contact Info */
+        .contact-info {
+            background-color: #1e2a4a;
+            color: #ffffff;
+            width: 40%;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+    
+        .contact-info h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+    
+        .contact-info p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            color: #e0e0e0;
+        }
+    
+        .contact-info div {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+    
+        .contact-info div i {
+            margin-right: 1rem;
+            font-size: 1.8rem;
+            color: #007bff;
+        }
+    
+        .contact-info .social-icons {
+            display: flex;
+            gap: 1.5rem;
+        }
+    
+        .contact-info .social-icons a {
+            background: #007bff;
+            color: white;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+    
+        .contact-info .social-icons a:hover {
+            background: #0056b3;
+            transform: scale(1.1);
+        }
+    
+        /* Right Side - Contact Form */
+        .contact-form {
+            background-color: #ffffff;
+            width: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            box-shadow: -4px 0px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+    
+        .contact-form form {
+            width: 100%;
+            max-width: 600px;
+        }
+    
+        /* Input Fields Styling */
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea,
+        .contact-form button {
+            width: 100%;
+            margin-bottom: 1.5rem;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+    
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+    
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+    
+        .contact-form button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+    
+        .contact-form button:hover {
+            background-color: #0056b3;
+        }
+    
+        /* Slider */
+        .slider {
+            position: fixed;
+            top: 0;
+            right: -350px;
+            width: 350px;
+            height: 100%;
+            background: #ffffff;
+            box-shadow: -2px 0px 15px rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            overflow-y: auto;
+            transition: right 0.3s ease;
+            z-index: 1000;
+            border-radius: 8px;
+        }
+    
+        .slider.active {
+            right: 0;
+        }
+    
+        .slider h2 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+    
+        .slider ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+    
+        .slider li {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 1.2rem;
+            background: #f9f9f9;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+    
+        .slider li:hover {
+            background: #007bff;
+            color: white;
+        }
+    
+        /* Slider Button */
+        .slider-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #007bff;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+    
+        .slider-btn svg {
+            fill: white;
+            width: 30px;
+            height: 30px;
+        }
+    
+        .slider-btn:hover {
+            background: #0056b3;
+            transform: scale(1.1);
+        }
+    
+        /* List Styling */
+        .message-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-top: 1rem;
+        }
+
+        .message-item {
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .message-item:hover {
+            background-color: #f0f8ff;
+            transform: translateX(5px);
+        }
+
+        /* Custom styling for names, emails, subjects */
+        .message-item {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .message-item span {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Add a hover effect */
+        .message-item:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: #f0f8ff;
+        }
+
+        /* Improved Modal Style */
+        .modal {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #0c2749b2;
+        }
+
+        .modal-content {
+            min-width: 320px;
+            max-width: 700px;
+            height: fit-content;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background: #ffffff;
+        }
+
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            color: #007bff;
+        }
+
+        .modal-body {
+            font-size: 1.2rem;
+            color: #333;
+            line-height: 1.6;
+            white-space: pre-line;
+        }
+
+        /* Close Button Style */
+        .modal-close-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal-close-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>            
+</head>
+<body>
+    <!-- Main Section -->
+    <div class="main-section">
+        <!-- Left Side -->
+        <div class="contact-info">
+            <h1>Get a Quote</h1>
+            <p>Fill up the form, and our team will get back to you within 24 hours.</p>
+            <div>
+                <i>📞</i> +0123 4567 8910
+            </div>
+            <div>
+                <i>✉️</i> hello@flowbase.com
+            </div>
+            <div>
+                <i>📍</i> 102 Street 2/14 Don
+            </div>
+            <div class="social-icons">
+                <a href="#">F</a>
+                <a href="#">T</a>
+                <a href="#">I</a>
+            </div>
+        </div>
+
+        <!-- Right Side -->
+        <div class="contact-form">
+            <form action="" method="POST">
+                <input type="text" id="name" name="name" placeholder="Your Name" required />
+                <input type="email" id="email" name="email" placeholder="Your Email" required />
+                <input type="text" id="subject" name="subject" placeholder="Subject" required />
+                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>        
+    </div>
+
+    <!-- Slider -->
+    <div class="slider" id="slider">
+        <h2>Messages</h2>
+        <ul id="messageList"></ul>
+    </div>
+
+    <div class="slider-btn" id="sliderBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 12l7-7 7 7H5z"/></svg>
+    </div>
+
+    <!-- Modal for Message Details -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle" class="modal-title">Message Details</h3>
+            <p id="modalBody" class="modal-body"></p>
+            <button id="closeModal" class="modal-close-btn">Close</button>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import Firebase functions
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getFirestore, onSnapshot, collection, getDocs, addDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+    
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA_9xrZRZLafG6dv-s9gw5YNxvpQ2B1FZg",
+            authDomain: "tester-finingegy.firebaseapp.com",
+            projectId: "tester-finingegy",
+            storageBucket: "tester-finingegy.firebasestorage.app",
+            messagingSenderId: "973107074948",
+            appId: "1:973107074948:web:33143057b3fb69695b6fd1"
+        };
+    
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const contactUsCollection = collection(db, "contact_us");
+    
+        // DOM elements
+        const form = document.querySelector('form');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const subjectInput = document.getElementById('subject');
+        const messageInput = document.getElementById('message');
+        const sliderBtn = document.getElementById('sliderBtn');
+        const slider = document.getElementById('slider');
+        const messageList = document.getElementById('messageList');
+        const modal = document.getElementById('modal');
+        const closeModal = document.getElementById('closeModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+    
+        // Send message to Firestore when the form is submitted
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+    
+            const name = nameInput.value;
+            const email = emailInput.value;
+            const subject = subjectInput.value;
+            const message = messageInput.value;
+    
+            if (name && email && subject && message) {
+                try {
+                    // Add message to Firestore
+                    await addDoc(contactUsCollection, {
+                        name: name,
+                        email: email,
+                        subject: subject,
+                        message: message,
+                        timestamp: new Date()
+                    });
+    
+                    // Clear form inputs
+                    nameInput.value = '';
+                    emailInput.value = '';
+                    subjectInput.value = '';
+                    messageInput.value = '';
+    
+                    alert("Your message has been sent!");
+                } catch (error) {
+                    console.error("Error adding document: ", error);
+                    alert("An error occurred. Please try again later.");
+                }
+            } else {
+                alert("Please fill in all fields.");
+            }
+        });
+    
+        // Fetch messages from Firestore in real-time and update the UI
+        function fetchMessages() {
+            // Use Firestore onSnapshot to listen for real-time changes
+            const unsubscribe = onSnapshot(contactUsCollection, (querySnapshot) => {
+                // Clear the current message list
+                messageList.innerHTML = '';
+
+                // Loop through the messages and append them to the list
+                querySnapshot.forEach((doc) => {
+                    const message = doc.data();
+                    const li = document.createElement('li');
+                    
+                    // Dynamically add the 'message-item' class to each list item
+                    li.classList.add('message-item');
+                    
+                    // Set the message content in the li element
+                    li.textContent = `${message.name} - ${message.email} - ${message.subject}`;
+                    
+                    // Store the document ID for reference
+                    li.dataset.id = doc.id;
+                    
+                    // Add a click event to show message details
+                    li.onclick = () => {
+                        showMessageDetails(message);
+                    };
+                    
+                    // Append the new message to the list
+                    messageList.appendChild(li);
+                });
+            });
+        }
+    
+        // Show message details in modal
+        function showMessageDetails(message) {
+            modal.classList.add('active');  // This will display the modal
+            modalTitle.textContent = `Message from ${message.name}`;
+            modalBody.textContent = `Subject: ${message.subject}\nMessage: ${message.message}`;
+        }
+    
+        // Toggle the slider
+        sliderBtn.addEventListener('click', () => {
+            slider.classList.toggle('active');
+        });
+
+        // Close the modal when the close button is clicked
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');  // This hides the modal
+        });
+    
+        // Fetch messages when the page loads
+        fetchMessages();
+    </script>    
+</body>
+</html>
